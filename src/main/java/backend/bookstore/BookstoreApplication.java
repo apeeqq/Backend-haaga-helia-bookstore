@@ -1,7 +1,6 @@
 package backend.bookstore;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
