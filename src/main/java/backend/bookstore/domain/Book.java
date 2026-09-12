@@ -1,20 +1,25 @@
 package backend.bookstore.domain;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Book {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String title;
     private String author;
-    private LocalDate publicationYear;
+    private Integer publicationYear;
     private String isbn;
     private BigDecimal price;
 
     public Book() {
     }
 
-    public Book(String title, String author, LocalDate publicationYear, String isbn, BigDecimal price) {
+    public Book(String title, String author, Integer publicationYear, String isbn, BigDecimal price) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -38,11 +43,11 @@ public class Book {
         this.author = author;
     }
 
-    public LocalDate getPublicationYear() {
+    public Integer getPublicationYear() {
         return publicationYear;
     }
 
-    public void setPublicationYear(LocalDate publicationYear) {
+    public void setPublicationYear(Integer publicationYear) {
         this.publicationYear = publicationYear;
     }
 
