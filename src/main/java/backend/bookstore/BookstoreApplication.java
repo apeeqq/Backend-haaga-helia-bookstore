@@ -24,6 +24,8 @@ public class BookstoreApplication {
 			Book b1 = new Book("Aarteenmetsästys", "John Doe", 2000, "978-3-16-148410-0", new BigDecimal("15"));
 			Book b2 = new Book("Hulivili", "Jane Doe", 1800, "072-3-16-135410-5", new BigDecimal("20"));
 
+			repository.save(b1);
+			repository.save(b2);
 		};
 	}
 
