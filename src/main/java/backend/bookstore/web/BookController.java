@@ -1,6 +1,5 @@
 package backend.bookstore.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,18 +8,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import backend.bookstore.domain.Book;
 import backend.bookstore.domain.BookRepository;
+import backend.bookstore.domain.CategoryRepository;
 
 @Controller 
 public class BookController {
-
-    @Autowired 
+ 
     private BookRepository repository;
-
-    public BookController() {
-    }
-
-    public BookController(BookRepository repository) {
+    private CategoryRepository crepository;
+    
+    public BookController(BookRepository repository, CategoryRepository crepository) {
         this.repository = repository;
+        this.crepository = crepository;
     }
 
     @GetMapping("/index")
@@ -43,6 +41,7 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", crepository.findAll());
         return "addbook";
     }
 
