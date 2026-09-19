@@ -35,21 +35,22 @@ public class BookstoreApplication {
 			crepository.save(childrensBooks);
 
 			log.info("save some sample books");
-			Book b1 = new Book("Aarteenmetsästys", "John Doe", 2000, "978-3-16-148410-0", new BigDecimal("15"));
-			Book b2 = new Book("Hulivili", "Jane Doe", 1800, "072-3-16-135410-5", new BigDecimal("20"));
-			Book b3 = new Book("The New Encyclopedia of Modern Bodybuilding : The Bible of Bodybuilding, Fully Updated and Revised", "Arnold Schwarzenegger", 1999, "978-0684857213", new BigDecimal("20"));
+			Book b1 = new Book("Aarteenmetsästys", "John Doe", 2000, "978-3-16-148410-0", new BigDecimal("15"), crepository.findByName("Children's Books").get(0));
+			Book b2 = new Book("Hulivili", "Jane Doe", 1800, "072-3-16-135410-5", new BigDecimal("20"), crepository.findByName("Children's Books").get(0));
+			Book b3 = new Book("The New Encyclopedia of Modern Bodybuilding : The Bible of Bodybuilding, Fully Updated and Revised", "Arnold Schwarzenegger", 1999, "978-0684857213", new BigDecimal("20"), crepository.findByName("Sports").get(0));
 
 			brepository.save(b1);
 			brepository.save(b2);
+			brepository.save(b3);
 
 			log.info("Fetch all the categories");
-			log.info("Category: id={} Name={}", sports.getCategoryid(), sports.getName());
-			log.info("Category: id={} Name={}", childrensBooks.getCategoryid(), childrensBooks.getName());
+			log.info(sports.toString());
+			log.info(childrensBooks.toString());
 
 			log.info("Fetch all the books");
-			log.info("Book 1: id={} Title={}, Author={}, Year={}, isbn={}", b1.getId(), b1.getTitle(), b1.getAuthor(), b1.getPublicationYear(), b1.getIsbn());
-			log.info("Book 2: id={} Title={}, Author={}, Year={}, isbn={}", b2.getId(), b2.getTitle(), b2.getAuthor(), b2.getPublicationYear(), b2.getIsbn());
-			log.info("Book 3: id={} Title={}, Author={}, Year={}, isbn={}", b3.getId(), b3.getTitle(), b3.getAuthor(), b3.getPublicationYear(), b3.getIsbn());
+			log.info(b1.toString());
+			log.info(b2.toString());
+			log.info(b3.toString());
 
 		};
 	}
