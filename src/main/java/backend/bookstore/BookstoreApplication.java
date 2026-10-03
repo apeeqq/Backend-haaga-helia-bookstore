@@ -17,7 +17,14 @@ import backend.bookstore.domain.CategoryRepository;
 @SpringBootApplication
 public class BookstoreApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+	private final BookRepository bookRepository;
+    private final CategoryRepository categoryRepository;
+    private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+
+    BookstoreApplication(CategoryRepository categoryRepository, BookRepository bookRepository) {
+        this.categoryRepository = categoryRepository;
+        this.bookRepository = bookRepository;
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
@@ -44,13 +51,14 @@ public class BookstoreApplication {
 			brepository.save(b3);
 
 			log.info("Fetch all the categories");
-			log.info(sports.toString());
-			log.info(childrensBooks.toString());
+			for (Category category : categoryRepository.findAll()) {
+				log.info(category.toString());
+			}
 
 			log.info("Fetch all the books");
-			log.info(b1.toString());
-			log.info(b2.toString());
-			log.info(b3.toString());
+			for (Book book : bookRepository.findAll()) {
+				log.info(book.toString());
+			}
 
 		};
 	}
