@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import backend.bookstore.domain.AppUser;
+import backend.bookstore.domain.AppUserRepository;
 import backend.bookstore.domain.Book;
 import backend.bookstore.domain.BookRepository;
 import backend.bookstore.domain.Category;
@@ -19,11 +21,13 @@ public class BookstoreApplication {
 
 	private final BookRepository bookRepository;
     private final CategoryRepository categoryRepository;
+	private final AppUserRepository appUserRepository;
     private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 
-    BookstoreApplication(CategoryRepository categoryRepository, BookRepository bookRepository) {
+    BookstoreApplication(CategoryRepository categoryRepository, BookRepository bookRepository, AppUserRepository appUserRepository) {
         this.categoryRepository = categoryRepository;
         this.bookRepository = bookRepository;
+		this.appUserRepository = appUserRepository;
     }
 
 	public static void main(String[] args) {
@@ -59,6 +63,12 @@ public class BookstoreApplication {
 			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());
 			}
+
+			AppUser user1 = new AppUser("user1", "$2a$10$3OImzXAjA85zn2pMFfgziO8CGYXl/TG.ZyVjmfuHsn9xb0Kif7huG", "user1@user1.com", "USER");
+			AppUser user2 = new AppUser("user2", "$2a$10$H40D4DtLswoiYD.i/jWRNOZNrXeEsRBUhNuTR8ycRXiL7wh45pHtS", "user2@user2.com", "ADMIN");
+
+			appUserRepository.save(user1);
+			appUserRepository.save(user2);
 
 		};
 	}

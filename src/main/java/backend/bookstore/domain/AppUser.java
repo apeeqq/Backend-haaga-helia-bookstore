@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity 
-public class User {
+public class AppUser {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +28,10 @@ public class User {
 
 
     
-    public User() {
+    public AppUser() {
     }
 
-    public User(Long id, String username, String passwordHash, String email, String role) {
-        this.id = id;
+    public AppUser(String username, String passwordHash, String email, String role) {
         this.username = username;
         this.passwordHash = passwordHash;
         this.email = email;
