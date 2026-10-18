@@ -64,8 +64,8 @@ public class BookstoreApplication {
 				log.info(book.toString());
 			}
 
-			AppUser user1 = new AppUser("user1", "$2a$10$3OImzXAjA85zn2pMFfgziO8CGYXl/TG.ZyVjmfuHsn9xb0Kif7huG", "user1@user1.com", "USER");
-			AppUser user2 = new AppUser("user2", "$2a$10$H40D4DtLswoiYD.i/jWRNOZNrXeEsRBUhNuTR8ycRXiL7wh45pHtS", "user2@user2.com", "ADMIN");
+			AppUser user1 = new AppUser("user1", "$2a$10$uYnQFJu1azWW4VVmjOlgy.qPUc4AvekqMASA5SKejuk.tMseJdMWW", "user1@user1.com", "USER");
+			AppUser user2 = new AppUser("user2", "$2a$10$yO2JsI7bbdv6fVK4o5eRY.D/WCKivtmWMRWFm5ZN4m5Xj2rOvsJ/C", "user2@user2.com", "ADMIN");
 
 			appUserRepository.save(user1);
 			appUserRepository.save(user2);
